@@ -12,19 +12,17 @@ sub printusage( )
 {
     print "Cannot process input.\n";
     print "USAGE:\n";
-    print "ssngenerator <prefix> <birthdate> <postfix>\n";
+    print "ssngenerator <birthdate>\n";
     print "<birthdate> = DDMMYY\n";
 }
 
 $number_args = $#ARGV + 1;
-if ($number_args != 3) {
+if ($number_args != 1) {
 	printusage();
 	exit;
 }
 
-$prefix=$ARGV[0];
-$birthdate=$ARGV[1];
-$postfix=$ARGV[2];
+$birthdate=$ARGV[0];
 
 $birthdatelength = length $birthdate;
 
@@ -58,7 +56,5 @@ foreach(@sequence)
 
 	$validsocialsecuritynumber =  "$currentsequence$remainder$birthdate\n";
 
-	$password = "$prefix$validsocialsecuritynumber$postfix";
-
-	print "$password";
+	print "$validsocialsecuritynumber";
 }
